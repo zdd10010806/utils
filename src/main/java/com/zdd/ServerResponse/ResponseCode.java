@@ -1,4 +1,4 @@
-package cn.blog.common;
+package com.zdd.ServerResponse;
 
  /**
   * @Description: 响应状态的枚举类

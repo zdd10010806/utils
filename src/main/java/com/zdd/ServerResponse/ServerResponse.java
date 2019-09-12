@@ -1,9 +1,7 @@
-package cn.blog.common;
+package com.zdd.ServerResponse;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * @Description: 高复用的数据封装类

@@ -1,4 +1,4 @@
-package com.OnlineShop.util;
+package com.zdd;
 
 import java.security.MessageDigest;
 

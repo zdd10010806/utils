@@ -1,6 +1,7 @@
-package com.OnlineShop.util;
+package com.zdd;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,7 +30,7 @@ public class PropertiesUtil {
 
     public static String getProperty(String key){
         String value = props.getProperty(key.trim());
-        if(org.apache.commons.lang.StringUtils.isBlank(value)){
+        if(StringUtils.isBlank(value)){
             return null;
         }
 
@@ -39,7 +40,7 @@ public class PropertiesUtil {
     public static String getProperty(String key,String defaultValue){
         String value = props.getProperty(key.trim());
 
-        if(org.apache.commons.lang.StringUtils.isBlank(value)){
+        if(StringUtils.isBlank(value)){
             value = defaultValue;
         }
 

@@ -1,4 +1,4 @@
-package com.OnlineShop.util;
+package com.zdd;
 
 import java.math.BigDecimal;
 
@@ -36,7 +36,7 @@ public class BigDecimalUtil {
         BigDecimal bigDecimal2 = new BigDecimal(Double.toString(num2));
         //除不尽的要进行一定的舍去策略
         //四舍五入  保留两位小数
-        return bigDecimal1.divide(bigDecimal2,2,BigDecimal.ROUND_HALF_UP);
+        return bigDecimal1.divide(bigDecimal2, 2, BigDecimal.ROUND_HALF_UP);
 
     }
 }
