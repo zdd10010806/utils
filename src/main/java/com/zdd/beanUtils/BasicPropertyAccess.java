@@ -4,6 +4,11 @@ import org.apache.commons.beanutils.PropertyUtils;
 
 import java.lang.reflect.InvocationTargetException;
 
+
+/**
+ * PropertyUtils 访问bean的get，set方法
+ */
+
 public class BasicPropertyAccess {
 
     /**
