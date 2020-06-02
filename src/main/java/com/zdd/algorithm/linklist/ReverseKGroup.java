@@ -1,4 +1,6 @@
-package com.zdd.algorithm;
+package com.zdd.algorithm.linklist;
+
+import com.zdd.algorithm.ListNode;
 
 public class ReverseKGroup {
     public static void main(String[] args) {

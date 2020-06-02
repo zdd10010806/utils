@@ -89,8 +89,8 @@ public class QuickSort {
             return;
         }
         int pivotIndex = partition2(nums, start, end);
-        quickSort(nums, start, pivotIndex - 1);
-        quickSort(nums, pivotIndex + 1, end);
+        quickSort2(nums, start, pivotIndex - 1);
+        quickSort2(nums, pivotIndex + 1, end);
 
     }
 
@@ -166,4 +166,7 @@ public class QuickSort {
         }
         return p1;
     }
+
+
+
 }
