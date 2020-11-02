@@ -38,6 +38,7 @@ public class Test {
         Integer[] aa = new Integer[2];
         aa[0] = 1;
         aa[1] = 2;
+        System.out.println("============");
         System.out.println(RamUsageEstimator.shallowSizeOf(aa));
         System.out.println(RamUsageEstimator.sizeOf(aa));
         System.out.println(ClassLayout.parseInstance(aa).toPrintable());

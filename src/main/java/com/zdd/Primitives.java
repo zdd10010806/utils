@@ -17,6 +17,7 @@ public final class Primitives {
         Map<String, Function> strToFunc = new HashMap<>(16);
 
         add(strToPrim, "boolean", boolean.class);
+//        add(strToPrim, "boolean", Boolean.TYPE);
         add(strToPrim, "byte", byte.class);
         add(strToPrim, "char", char.class);
         add(strToPrim, "double", double.class);

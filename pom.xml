@@ -8,6 +8,13 @@
     <artifactId>upup</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <scm>
+        <connection>scm:svn:http://127.0.0.1/dummy</connection>
+        <developerConnection>scm:svn:https://127.0.0.1/dummy</developerConnection>
+        <tag>HEAD</tag>
+        <url>http://127.0.0.1/dummy</url>
+    </scm>
+
     <repositories>
         <repository>
             <id>nexus-aliyun</id>
@@ -45,6 +52,14 @@
     </properties>
 
     <dependencies>
+
+
+        <!--https://apidoc.gitee.com/loolly/hutool/-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.3.10</version>
+        </dependency>
 
         <dependency>
             <groupId>com.lmax</groupId>
@@ -181,6 +196,14 @@
         </dependency>
 
         <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <!-- use 2.9.1 for Java 7 projects -->
+            <version>3.16.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>2.21.0</version>
@@ -201,6 +224,27 @@
             <version>2.2</version>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.googlecode.concurrentlinkedhashmap</groupId>
+            <artifactId>concurrentlinkedhashmap-lru</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+
+
+        <!--<dependency>-->
+        <!--<groupId>diffbot</groupId>-->
+        <!--<artifactId>diffbot-java</artifactId>-->
+        <!--<version>1.0-SNAPSHOT</version>-->
+        <!--</dependency>-->
+
+
+        <!--<dependency>-->
+        <!--<groupId>com.kohlschutter.boilerpipe</groupId>-->
+        <!--<artifactId>boilerpipe-common</artifactId>-->
+        <!--<version>2.0-SNAPSHOT</version>-->
+        <!--</dependency>-->
 
 
         <!-- JMH-->
@@ -234,19 +278,52 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
                 <configuration>
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
                         <manifestEntries>
-                            <!--<Premain-Class>com.zdd.jvm.instrument.AgentApplication</Premain-Class>-->
-                            <Agent-Class>com.zdd.jvm.instrument.AgentApplication</Agent-Class>
-                            <Can-Redefine-Classes>true</Can-Redefine-Classes>
-                            <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                            <Implementation-Build>$\{buildNumber}</Implementation-Build>
                         </manifestEntries>
                     </archive>
                 </configuration>
+                <!--<configuration>-->
+                <!--<archive>-->
+                <!--<manifest>-->
+                <!--<addClasspath>true</addClasspath>-->
+                <!--</manifest>-->
+                <!--<manifestEntries>-->
+                <!--&lt;!&ndash;<Premain-Class>com.zdd.jvm.instrument.AgentApplication</Premain-Class>&ndash;&gt;-->
+                <!--<Agent-Class>com.zdd.jvm.instrument.AgentApplication</Agent-Class>-->
+                <!--<Can-Redefine-Classes>true</Can-Redefine-Classes>-->
+                <!--<Can-Retransform-Classes>true</Can-Retransform-Classes>-->
+                <!--</manifestEntries>-->
+                <!--</archive>-->
+                <!--</configuration>-->
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <format>At {1,time} on {1,date}, there was {2} on planet {0,number,integer}.</format>
+                    <items>
+                        <item implementation="java.lang.Integer">7</item>
+                        <item>timestamp</item>
+                        <item>a disturbance in the Force</item>
+                    </items>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

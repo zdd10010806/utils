@@ -1,5 +1,7 @@
 package com.zdd.algorithm;
 
+import java.util.Stack;
+
 public class TwoNumAdd {
 
     public static void main(String[] args) {
@@ -13,6 +15,7 @@ public class TwoNumAdd {
 
 
         print(AddTwoNum(listNode1, listNode4));
+        print2(AddTwoNum2(listNode1, listNode4));
 
     }
 
@@ -55,11 +58,62 @@ public class TwoNumAdd {
         return tmp.next;
     }
 
+    public static Stack<Integer> AddTwoNum2(ListNode head1, ListNode head2) {
+        Stack<Integer> s1= new Stack<>();
+        Stack<Integer> s2= new Stack<>();
+        ListNode h1 = head1;
+        ListNode h2 = head2;
+        while (h1!=null){
+            s1.push(h1.val);
+            h1 = h1.next;
+        }
+        while (h2!=null){
+            s2.push(h2.val);
+            h2 = h2.next;
+        }
+        if (s1.isEmpty()) {
+            return s2;
+        }
+        if (s2.isEmpty()) {
+            return s1;
+        }
+
+        Stack<Integer> s3= new Stack<>();
+        int jinWei = 0;
+        while (!s1.isEmpty() && !s2.isEmpty()) {
+            int sum =s1.pop() + s2.pop() + jinWei;
+            s3.push(sum % 10);
+            jinWei = sum / 10;
+        }
+        while (!s1.isEmpty()) {
+            int sum =s1.pop() + jinWei;
+            s3.push(sum % 10);
+            jinWei = sum / 10;
+        }
+        while (!s2.isEmpty()) {
+            int sum =s2.pop() + jinWei;
+            s3.push(sum % 10);
+            jinWei = sum / 10;
+        }
+
+
+        if (jinWei == 1) {
+            s3.push(1);
+        }
+        return s3;
+    }
+
 
     public static void print(ListNode head) {
         while (head != null) {
             System.out.print(head.val + "\t");
             head = head.next;
+        }
+        System.out.println();
+    }
+  public static void print2(Stack<Integer> s) {
+        while (!s.isEmpty()) {
+            System.out.print(s.pop() + "\t");
         }
         System.out.println();
     }

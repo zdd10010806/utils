@@ -149,9 +149,7 @@ public class QuickSort {
                 p1 = p1.next;
 
                 if (p1 != p2) {
-                    int temp = p1.val;
-                    p1.val = p2.val;
-                    p2.val = temp;
+                    swap(p1,p2);
                 }
 
             }
@@ -167,6 +165,12 @@ public class QuickSort {
         return p1;
     }
 
+
+    public static void swap (ListNode p1, ListNode p2){
+        int temp = p1.val;
+        p1.val = p2.val;
+        p2.val = temp;
+    }
 
 
 }
